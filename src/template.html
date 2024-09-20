@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <header class="header">
+        <h1>Task Manager</h1>
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Projects</h2>
+            <ul class="project-list">
+                <li>Home Renovation</li>
+                <li>Work Tasks</li>
+                <li>Personal Goals</li>
+            </ul>
+            <button id="add-project">Add Project</button>
+        </aside>
+        <main class="main-content">
+            <div class="project">
+                <h2>Project: Home Renovation</h2>
+                <div class="tasks">
+                    <div class="task">
+                        <div class="task-header">
+                            <input type="checkbox" id="task1">
+                            <label for="task1">Paint living room</label>
+                            <span class="priority priority-high">High</span>
+                        </div>
+                        <p>Choose colors and paint the living room walls</p>
+                        <p>Due: 2024-10-15</p>
+                    </div>
+                    <div class="task">
+                        <div class="task-header">
+                            <input type="checkbox" id="task2">
+                            <label for="task2">Replace kitchen faucet</label>
+                            <span class="priority priority-medium">Medium</span>
+                        </div>
+                        <p>Buy a new faucet and install it in the kitchen sink</p>
+                        <p>Due: 2024-09-30</p>
+                    </div>
+                </div>
+            </div>
+            
+            <form id="add-task-form">
+                <h2>Add New Task</h2>
+                <input type="text" id="task-title" placeholder="Task Title" required>
+                <textarea id="task-description" placeholder="Task Description"></textarea>
+                <input type="date" id="task-due-date">
+                <select id="task-priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <button type="submit">Add Task</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

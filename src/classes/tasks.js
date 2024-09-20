@@ -20,7 +20,7 @@ export function task(title, description, dueDate, priority, checkbox) {
 }
 export function project(titleProject) {
     const tasks = [];
-    return { titleProject, tasks 
+    return { titleProject, tasks, 
         addTask(project, task) {
             project.tasks.push(task);
         },
@@ -30,10 +30,6 @@ export function project(titleProject) {
     };
 }
 
-var projectActions = {
-   
-    
-    
-}
+
 
 
