@@ -1,6 +1,12 @@
-//factory function to create task objects
 export function task(title, description, dueDate, priority, checkbox) {
-    return { title, description, dueDate, priority, checkbox,
+    return {
+        id: Date.now().toString(), // Generate a unique id
+        title,
+        description,
+        dueDate,
+        priority,
+        checkbox,
+        
         editTitle(newTitle) {
             this.title = newTitle;
         },
@@ -18,18 +24,22 @@ export function task(title, description, dueDate, priority, checkbox) {
         }
     };
 }
+
 export function project(titleProject) {
-    const tasks = [];
-    return { titleProject, tasks, 
-        addTask(project, task) {
-            project.tasks.push(task);
+    return {
+        titleProject,
+        tasks: [],
+        addTask(task) {
+            this.tasks.push(task);
         },
-        removeTask(project, title) {
-            project.tasks = project.tasks.filter(t => t.title !== title);
+        removeTask(id) {
+            this.tasks = this.tasks.filter(t => t.id !== id);
+        },
+        findTask(id) {
+            return this.tasks.find(t => t.id === id);
         }
     };
 }
-
 
 
 

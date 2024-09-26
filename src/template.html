@@ -3,62 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Task Manager</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:,">
 </head>
 <body>
     <header class="header">
         <h1>Task Manager</h1>
     </header>
+
     <div class="container">
         <aside class="sidebar">
             <h2>Projects</h2>
             <ul class="project-list">
-                <li>Home Renovation</li>
-                <li>Work Tasks</li>
-                <li>Personal Goals</li>
+                <!-- Projects will be dynamically added here -->
             </ul>
             <button id="add-project">Add Project</button>
         </aside>
+
         <main class="main-content">
-            <div class="project">
-                <h2>Project: Home Renovation</h2>
+            <section class="project">
+                <h2 id="current-project-title">Select a Project</h2>
                 <div class="tasks">
-                    <div class="task">
-                        <div class="task-header">
-                            <input type="checkbox" id="task1">
-                            <label for="task1">Paint living room</label>
-                            <span class="priority priority-high">High</span>
-                        </div>
-                        <p>Choose colors and paint the living room walls</p>
-                        <p>Due: 2024-10-15</p>
-                    </div>
-                    <div class="task">
-                        <div class="task-header">
-                            <input type="checkbox" id="task2">
-                            <label for="task2">Replace kitchen faucet</label>
-                            <span class="priority priority-medium">Medium</span>
-                        </div>
-                        <p>Buy a new faucet and install it in the kitchen sink</p>
-                        <p>Due: 2024-09-30</p>
-                    </div>
+                    <!-- Tasks will be dynamically added here -->
                 </div>
-            </div>
-            
-            <form id="add-task-form">
-                <h2>Add New Task</h2>
-                <input type="text" id="task-title" placeholder="Task Title" required>
-                <textarea id="task-description" placeholder="Task Description"></textarea>
-                <input type="date" id="task-due-date">
-                <select id="task-priority">
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
-                </select>
-                <button type="submit">Add Task</button>
-            </form>
+            </section>
+
+            <section class="add-task">
+                <h3>Add New Task</h3>
+                <form id="add-task-form">
+                    <input type="text" id="taskName" placeholder="Task Name" required>
+                    <textarea id="taskDescription" placeholder="Task Description" required></textarea>
+                    <input type="date" id="taskDate" required>
+                    <select id="taskPriority" required>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                
+                    <button type="button" id="taskButton">Add Task</button>
+                </form>
+            </section>
         </main>
     </div>
+
+    <div id="createProjectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create New Project</h2>
+            <form id="createProjectForm">
+                <input type="text" id="projectTitle" placeholder="Project Title" required>
+                <button type="submit">Create Project</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="editTaskModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Task</h2>
+            <form id="editTaskForm">
+                <input type="text" id="editTitle" placeholder="Task Title" required>
+                <textarea id="editDescription" placeholder="Task Description" required></textarea>
+                <input type="date" id="editDueDate" required>
+                <select id="editPriority" required>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+                <label>
+                    <input type="checkbox" id="editCheckbox">
+                    Completed
+                </label>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="index.js"></script>
 </body>
 </html>
