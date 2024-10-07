@@ -228,3 +228,15 @@ button[type="button"]:hover {
         margin-bottom: 20px;
     }
 }
+.task-dueDate {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.task-dueDate.overdue {
+    color: red;
+}
+
+.task-dueDate.due-today {
+    color: orange;
+}
