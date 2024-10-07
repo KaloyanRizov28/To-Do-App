@@ -1,12 +1,9 @@
-
-
 // task-management.js
 
-import { project , task } from "./tasks";
+import { project, task } from "./tasks";
+
 const projects = [];
-
-
-
+let currentProject;
 
 function createTaskUi(task, currentProject) {
     const taskDiv = document.createElement('div');
@@ -33,8 +30,10 @@ function createTaskUi(task, currentProject) {
         task.editCheckbox(e.target.checked);
         renderCurrentProject(currentProject);
     });
-    taskDiv.querySelector('.edit').addEventListener('click', () =>{ editTaskInDom(task , currentProject);
-        renderCurrentProject(currentProject);});
+    taskDiv.querySelector('.edit').addEventListener('click', () => {
+        editTaskInDom(task, currentProject);
+        renderCurrentProject(currentProject);
+    });
     taskDiv.querySelector('.delete').addEventListener('click', () => {
         currentProject.removeTask(task.id);
         renderCurrentProject(currentProject);
@@ -48,7 +47,7 @@ function appendTaskToDom(task, currentProject) {
     document.querySelector('.tasks').appendChild(taskUi);
 }
 
-function editTaskInDom(task , currentProject) {
+function editTaskInDom(task, currentProject) {
     const modal = document.getElementById("editTaskModal");
     const span = modal.getElementsByClassName("close")[0];
 
@@ -87,15 +86,15 @@ function editTaskInDom(task , currentProject) {
 
         modal.style.display = "none";
         renderCurrentProject(currentProject);
-       
     };
-   
 }
-function renderCurrentProject(currentProject){
+
+function renderCurrentProject(project) {
     const tasksDiv = document.querySelector('.tasks');
     tasksDiv.innerHTML = '';
-    currentProject.tasks.forEach(task => appendTaskToDom(task , currentProject));
-};
+    project.tasks.forEach(task => appendTaskToDom(task, project));
+}
+
 function renderSideBar(projects) {
     const sideBar = document.querySelector('.project-list');
     sideBar.innerHTML = '';
@@ -104,15 +103,15 @@ function renderSideBar(projects) {
         projectDiv.classList.add('project');
         projectDiv.textContent = project.titleProject;
         projectDiv.addEventListener('click', () => {
-            renderCurrentProject(project);
+            currentProject = project;
+            renderCurrentProject(currentProject);
         });
         sideBar.appendChild(projectDiv);
     });
 }
 
 export function init() {
-    
-    let currentProject = project('First Project');
+    currentProject = project('First Project');
     projects.push(currentProject);
     renderSideBar(projects);
     renderCurrentProject(currentProject);
@@ -149,6 +148,5 @@ export function init() {
             modal.style.display = "none";
             renderSideBar(projects);
         }
-
     });
 }
