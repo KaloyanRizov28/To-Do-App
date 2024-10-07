@@ -137,12 +137,45 @@ function renderSideBar(projects) {
         const projectDiv = document.createElement('li');
         projectDiv.classList.add('project');
         projectDiv.textContent = project.titleProject;
+        
+        // Create delete button for project
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.classList.add('delete-project');
+        deleteButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent project selection when clicking delete
+            deleteProject(project);
+        });
+        
+        projectDiv.appendChild(deleteButton);
+        
         projectDiv.addEventListener('click', () => {
             currentProject = project;
             renderCurrentProject(currentProject);
         });
         sideBar.appendChild(projectDiv);
     });
+}
+
+function deleteProject(projectToDelete) {
+    const index = projects.findIndex(p => p === projectToDelete);
+    if (index !== -1) {
+        projects.splice(index, 1);
+        saveToLocalStorage();
+        
+        // If the deleted project was the current project, select a new one
+        if (currentProject === projectToDelete) {
+            currentProject = projects.length ? projects[0] : null;
+        }
+        
+        renderSideBar(projects);
+        if (currentProject) {
+            renderCurrentProject(currentProject);
+        } else {
+            // Clear tasks if no projects remain
+            document.querySelector('.tasks').innerHTML = '';
+        }
+    }
 }
 
 export function init() {

@@ -44,6 +44,9 @@ body {
     border-bottom: 1px solid #eee;
     cursor: pointer;
     transition: background-color 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .project-list li:hover {
@@ -53,6 +56,20 @@ body {
 .project-list li.active {
     background-color: #e0e0e0;
     font-weight: bold;
+}
+
+.delete-project {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-project:hover {
+    background-color: #da190b;
 }
 
 #add-project {
@@ -142,6 +159,19 @@ body {
     background-color: #da190b;
 }
 
+.task-dueDate {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.task-dueDate.overdue {
+    color: red;
+}
+
+.task-dueDate.due-today {
+    color: orange;
+}
+
 /* Form styles */
 form {
     background-color: #fff;
@@ -227,16 +257,4 @@ button[type="button"]:hover {
         border-bottom: 1px solid #ddd;
         margin-bottom: 20px;
     }
-}
-.task-dueDate {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.task-dueDate.overdue {
-    color: red;
-}
-
-.task-dueDate.due-today {
-    color: orange;
 }
