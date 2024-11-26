@@ -29,55 +29,125 @@
             </section>
 
             <section class="add-task">
-                <h3>Add New Task</h3>
-                <form id="add-task-form">
-                    <input type="text" id="taskName" placeholder="Task Name" required>
-                    <textarea id="taskDescription" placeholder="Task Description" required></textarea>
-                    <input type="date" id="taskDate" required>
-                    <select id="taskPriority" required>
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
-                    </select>
+                <form id="add-task-form" class="form-container">
+                    <div class="form-group">
+                        <label for="taskName">Task Name</label>
+                        <input type="text" id="taskName" class="form-control" placeholder="Enter task name" required>
+                        <span class="error-message">Task name is required</span>
+                    </div>
                 
-                    <button type="button" id="taskButton">Add Task</button>
+                    <div class="form-group">
+                        <label for="taskDescription">Task Description</label>
+                        <textarea id="taskDescription" class="form-control" placeholder="Enter task description" required></textarea>
+                        <span class="error-message">Task description is required</span>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="taskDate">Due Date</label>
+                        <input type="date" id="taskDate" class="form-control" required>
+                        <span class="error-message">Due date is required</span>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="taskPriority">Priority</label>
+                        <select id="taskPriority" class="form-control" required>
+                            <option value="">Select Priority</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                        <span class="error-message">Priority is required</span>
+                    </div>
+                
+                    <button type="button" id="taskButton" class="btn">Add Task</button>
                 </form>
             </section>
         </main>
     </div>
 
-    <div id="createProjectModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
+    <!-- Create Project Modal -->
+<div id="createProjectModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
             <h2>Create New Project</h2>
-            <form id="createProjectForm">
-                <input type="text" id="projectTitle" placeholder="Project Title" required>
-                <button type="submit">Create Project</button>
-            </form>
+            <button class="close-btn" aria-label="Close modal">&times;</button>
         </div>
+        <form id="createProjectForm" class="modal-form">
+            <div class="form-group">
+                <label for="projectTitle">Project Title</label>
+                <input type="text" 
+                       id="projectTitle" 
+                       placeholder="Enter project title" 
+                       required>
+                <span class="error-message"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary close-modal">Cancel</button>
+                <button type="submit" class="btn-primary">Create Project</button>
+            </div>
+        </form>
     </div>
+</div>
 
-    <div id="editTaskModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
+<!-- Edit Task Modal -->
+<div id="editTaskModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
             <h2>Edit Task</h2>
-            <form id="editTaskForm">
-                <input type="text" id="editTitle" placeholder="Task Title" required>
-                <textarea id="editDescription" placeholder="Task Description" required></textarea>
-                <input type="date" id="editDueDate" required>
-                <select id="editPriority" required>
-                    <option value="Low">Low</option>
-                    <option value="Medium">Medium</option>
-                    <option value="High">High</option>
-                </select>
-                <label>
-                    <input type="checkbox" id="editCheckbox">
-                    Completed
-                </label>
-                <button type="submit">Save Changes</button>
-            </form>
+            <button type="button" class="close-btn" aria-label="Close modal">&times;</button>
         </div>
+        <form id="editTaskForm" class="modal-form">
+            <div class="form-group">
+                <label for="editTitle">Task Title</label>
+                <input type="text"
+                    id="editTitle"
+                    placeholder="Enter task title"
+                    required>
+                <span class="error-message"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="editDescription">Task Description</label>
+                <textarea id="editDescription"
+                    placeholder="Enter task description"
+                    required></textarea>
+                <span class="error-message"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="editDueDate">Due Date</label>
+                <input type="date"
+                    id="editDueDate"
+                    required>
+                <span class="error-message"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="editPriority">Priority Level</label>
+                <select id="editPriority" required>
+                    <option value="">Select priority</option>
+                    <option value="Low">Low Priority</option>
+                    <option value="Medium">Medium Priority</option>
+                    <option value="High">High Priority</option>
+                </select>
+                <span class="error-message"></span>
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="editCheckbox">
+                    <span class="checkmark"></span>
+                    Mark as completed
+                </label>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary close-modal">Cancel</button>
+                <button type="submit" class="btn-submit">Save Changes</button>
+            </div>
+        </form>
     </div>
+</div>
 
     <script type="module" src="index.js"></script>
 </body>
