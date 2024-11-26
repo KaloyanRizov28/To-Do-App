@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="609a232ab53e413e38d2.css">
+<script defer src="main.js"></script></head>
+<body>
+    <header class="header">
+        <h1>Task Manager</h1>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Projects</h2>
+            <ul class="project-list">
+                <!-- Projects will be dynamically added here -->
+            </ul>
+            <button id="add-project">Add Project</button>
+        </aside>
+
+        <main class="main-content">
+            <section class="project">
+                <h2 id="current-project-title">Select a Project</h2>
+                <div class="tasks">
+                    <!-- Tasks will be dynamically added here -->
+                </div>
+            </section>
+
+            <section class="add-task">
+                <form id="add-task-form" class="form-container">
+                    <div class="form-group">
+                        <label for="taskName">Task Name</label>
+                        <input type="text" id="taskName" class="form-control" placeholder="Enter task name" required>
+                        <span class="error-message">Task name is required</span>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="taskDescription">Task Description</label>
+                        <textarea id="taskDescription" class="form-control" placeholder="Enter task description" required></textarea>
+                        <span class="error-message">Task description is required</span>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="taskDate">Due Date</label>
+                        <input type="date" id="taskDate" class="form-control" required>
+                        <span class="error-message">Due date is required</span>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="taskPriority">Priority</label>
+                        <select id="taskPriority" class="form-control" required>
+                            <option value="">Select Priority</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                        <span class="error-message">Priority is required</span>
+                    </div>
+                
+                    <button type="button" id="taskButton" class="btn">Add Task</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- Create Project Modal -->
+<div id="createProjectModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Create New Project</h2>
+            <button class="close-btn" aria-label="Close modal">&times;</button>
+        </div>
+        <form id="createProjectForm" class="modal-form">
+            <div class="form-group">
+                <label for="projectTitle">Project Title</label>
+                <input type="text" 
+                       id="projectTitle" 
+                       placeholder="Enter project title" 
+                       required>
+                <span class="error-message"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary close-modal">Cancel</button>
+                <button type="submit" class="btn-primary">Create Project</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Edit Task Modal -->
+<div id="editTaskModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Edit Task</h2>
+            <button type="button" class="close-btn" aria-label="Close modal">&times;</button>
+        </div>
+        <form id="editTaskForm" class="modal-form">
+            <div class="form-group">
+                <label for="editTitle">Task Title</label>
+                <input type="text"
+                    id="editTitle"
+                    placeholder="Enter task title"
+                    required>
+                <span class="error-message"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="editDescription">Task Description</label>
+                <textarea id="editDescription"
+                    placeholder="Enter task description"
+                    required></textarea>
+                <span class="error-message"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="editDueDate">Due Date</label>
+                <input type="date"
+                    id="editDueDate"
+                    required>
+                <span class="error-message"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="editPriority">Priority Level</label>
+                <select id="editPriority" required>
+                    <option value="">Select priority</option>
+                    <option value="Low">Low Priority</option>
+                    <option value="Medium">Medium Priority</option>
+                    <option value="High">High Priority</option>
+                </select>
+                <span class="error-message"></span>
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="editCheckbox">
+                    <span class="checkmark"></span>
+                    Mark as completed
+                </label>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary close-modal">Cancel</button>
+                <button type="submit" class="btn-submit">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <script type="module" src="e1221012721d9e72330e.js"></script>
+</body>
+</html>
